@@ -1,0 +1,89 @@
+const chalk = require("chalk");
+const info = (message, object, methodName)=> {
+    if (object) {
+        console.info(
+            chalk.green(
+                `[${getTimeStamp()}] [INFO]${
+                    methodName ? " " + methodName : ""
+                } - ${message}`
+            ),
+            object
+        );
+    } else {
+        console.info(
+            chalk.green(
+                `[${getTimeStamp()}] [INFO] ${
+                    methodName ? " " + methodName : ""
+                } - ${message}`
+            )
+        );
+    }
+}
+
+const warn = (message, object, methodName)=> {
+    if (object) {
+        console.warn(
+            chalk.yellow(
+                `[${getTimeStamp()}] [WARN] ${
+                    methodName ? " " + methodName : ""
+                } - ${message}`
+            ),
+            object
+        );
+    } else {
+        console.warn(
+            chalk.yellow(
+                `[${getTimeStamp()}] [WARN] ${
+                    methodName ? " " + methodName : ""
+                } - ${message}`
+            )
+        );
+    }
+}
+
+const error = (message, object, methodName) => {
+    if (object) {
+        console.error(
+            chalk.red(
+                `[${getTimeStamp()}] [ERROR] ${
+                    methodName ? " " + methodName : ""
+                } - ${message}`
+            ),
+            object
+        );
+    } else {
+        console.error(
+            chalk.red(
+                `[${getTimeStamp()}] [ERROR] ${
+                    methodName ? " " + methodName : ""
+                } - ${message}`
+            )
+        );
+    }
+}
+
+const debug = (message, object, methodName) => {
+    if (object) {
+        console.debug(
+            chalk.blue(
+                `[${getTimeStamp()}] [DEBUG] ${
+                    methodName ? " " + methodName : ""
+                } - ${message}`
+            ),
+            object
+        );
+    } else {
+        console.debug(
+            chalk.blue(
+                `[${getTimeStamp()}] [DEBUG] ${
+                    methodName ? " " + methodName : ""
+                } - ${message}`
+            )
+        );
+    }
+}
+
+const getTimeStamp = () => {
+    return new Date().toISOString();
+};
+module.exports = {info, warn, error, debug}
